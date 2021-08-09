@@ -80,7 +80,8 @@ def move_robot():
         else:
             right_forward.start(thrust[1])
     else:
-        for motor in motors: motor.stop()
+        for motor in motors:
+            motor.stop()
     return "Good"
 
 
