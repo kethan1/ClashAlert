@@ -9,7 +9,7 @@ except ImportError:
         from _thread import get_ident
 
 
-class CameraEvent(object):
+class CameraEvent:
     """An Event-like class that signals all active clients when a new frame is
     available.
     """
@@ -51,7 +51,7 @@ class CameraEvent(object):
         self.events[get_ident()][0].clear()
 
 
-class BaseCamera(object):
+class BaseCamera:
     thread = None  # background thread that reads frames from camera
     frame = None  # current frame is stored here by background thread
     last_access = 0  # time of last client access to the camera
