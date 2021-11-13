@@ -16,7 +16,7 @@ The joystick triggers the motors that move the robot in the direction that it is
 
 ## Future Goals: 
 
-We also envision that our plan will be enhanced when we transmit the signals among the cars via 5G localized network. We plan to broadcast the signal to other cars on the same path in order to ensure the safety of pedestrians. It will also be used for emergency vechiles so they have a constant feed of the best route.** 
+We also envision that our plan will be enhanced when we transmit the signals among the cars via 5G localized network. We plan to broadcast the signal to other cars on the same path in order to ensure the safety of pedestrians. It will also be used for emergency vechiles so they have a constant feed of the best route.
 
 ## Hardware Used
 
