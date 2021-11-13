@@ -9,15 +9,14 @@ app.secret_key = "!thisisasupersecretkey!"
 
 GPIO.setmode(GPIO.BCM)
 pinlist = [17, 27, 22, 23]
+ir_sensor = 24
 GPIO.setup(pinlist, GPIO.OUT)
+GPIO.setup(ir_sensor, GPIO.IN)
 
 right_backward = GPIO.PWM(17, 100)
 right_forward = GPIO.PWM(27, 100)
 left_backward = GPIO.PWM(22, 100)
 left_forward = GPIO.PWM(23, 100)
-ir_sensor = 24
-
-GPIO.setup(ir_sensor, GPIO.IN)
 
 speed = 75
 
@@ -26,7 +25,7 @@ for motor in motors:
     motor.stop()
     
 
-# assumes theta in degrees and r = 0 to 100 %
+# assumes theta in degrees and r = 0 to 100%
 # returns a tuple of percentages: (left_thrust, right_thrust)
 def throttle_angle_to_thrust(theta, r=speed):
     theta = ((theta + 180) % 360) - 180       # normalize value to [-180, 180)
@@ -67,11 +66,10 @@ def video_feed():
 def move_robot():
     if request.json["angle"] != "still":
         angle = request.json["angle"]
-        print(angle)
         if ((angle - 180) % 360) + 180 <= 270:
-            angle_adjusted = (((angle - 180) % 360) + 180)+90
+            angle_adjusted = (((angle - 180) % 360) + 180) + 90
         else:
-            angle_adjusted = (((angle - 180) % 360) + 180)-90
+            angle_adjusted = (((angle - 180) % 360) + 180) - 90
         thrust = throttle_angle_to_thrust(angle_adjusted)
         ir_sensor_output = GPIO.input(ir_sensor)
         if not Camera.red_led_detected:

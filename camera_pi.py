@@ -6,6 +6,9 @@ from base_camera import BaseCamera
 import cv2
 import numpy as np
 
+# boundary RED color range values; Hue (160 - 180)
+lower = np.array([160, 100, 175])
+upper = np.array([179, 255, 255])
 
 class Camera(BaseCamera):
     @staticmethod
@@ -30,11 +33,7 @@ class Camera(BaseCamera):
                 # Convert BGR to HSV
                 hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
                 
-                # boundary RED color range values; Hue (160 - 180)
-                lower2 = np.array([160, 100, 175])
-                upper2 = np.array([179, 255, 255])
-                
-                mask = cv2.inRange(hsv, lower2, upper2)
+                mask = cv2.inRange(hsv, lower, upper)
 
                 # Bitwise-AND mask and original image
                 res = cv2.bitwise_and(frame, frame, mask=mask)
