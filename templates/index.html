@@ -38,16 +38,18 @@
                     })
                 });  
             } else {
-                angle = "still"
-                fetch("/move_robot", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        angle: "still"
-                    })
-                });   
+                if (angle !== "still") {
+                    angle = "still"
+                    fetch("/move_robot", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            angle: "still"
+                        })
+                    });  
+                } 
             }         
         }, 50);
     </script>
