@@ -25,11 +25,6 @@
         var joy = new JoyStick('joyDiv');
         angle = null;
 
-        document.body.onmouseup = function() {
-            console.log(1)
-            Joystick.ResetJoy()
-        }
-
         setInterval(function() {
             if (joy.GetX() !== "0" && joy.GetY() !== "0") {
                 angle = Math.round(Math.atan2(joy.GetY(), joy.GetX()) * 180 / Math.PI);
@@ -43,19 +38,16 @@
                     })
                 });  
             } else {
-                if (angle !== "still") {
-                    angle = "still"
-                    fetch("/move_robot", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            angle: angle
-                        })
-                    }); 
-                }
-                     
+                angle = "still"
+                fetch("/move_robot", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        angle: "still"
+                    })
+                });   
             }         
         }, 50);
     </script>
