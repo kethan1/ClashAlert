@@ -2,7 +2,7 @@
 
 ## Project Goal:
 
-Crash Alert for self-driving cars by identifying traffic lights, moving cars and pedestrians.
+Crash Alert for self-driving cars by identifying traffic lights, moving cars, and pedestrians.
 
 ## Description: 
 
